@@ -16,6 +16,9 @@ export function UserSelector({ users, selectedUser, onChange }: UserSelectorProp
         onChange={(event) => onChange(event.target.value)}
         className="mt-2 w-full rounded-xl border border-slate-300 bg-slate-50 px-3 py-2 text-sm text-slate-900 outline-none transition focus:border-brand-500 focus:ring-2 focus:ring-brand-100"
       >
+        <option value="" disabled>
+          Seleccionar usuario...
+        </option>
         {users.map((user) => (
           <option key={user} value={user}>
             {user}
