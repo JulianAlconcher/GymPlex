@@ -16,10 +16,10 @@ const RM_KEY_OPTIONS: Array<{ label: string; value: '' | RmKey }> = [
   { label: 'Bench', value: 'bench' },
   { label: 'Squat', value: 'squat' },
   { label: 'Deadlift', value: 'deadlift' },
-  { label: 'Press Militar', value: 'pressMilitar' },
-  { label: 'Press Banca', value: 'pressBanca' },
-  { label: 'Sentadilla', value: 'sentadilla' },
-  { label: 'Peso Muerto', value: 'pesoMuerto' },
+  { label: 'Overhead Press', value: 'pressMilitar' },
+  { label: 'Bench Press', value: 'pressBanca' },
+  { label: 'Squat', value: 'sentadilla' },
+  { label: 'Deadlift', value: 'pesoMuerto' },
 ];
 
 function cloneDays(days: TrainingDay[]): TrainingDay[] {
