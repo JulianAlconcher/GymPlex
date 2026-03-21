@@ -6,6 +6,10 @@ import type { Exercise, RmKey, TrainingWeek } from '../types/routine';
 type RoutineWeekViewProps = {
   week: TrainingWeek;
   rms: Partial<Record<RmKey, number>>;
+  completedDays: string[];
+  completionTarget: number;
+  completedCount: number;
+  onToggleDayCompleted: (dayName: string) => void;
 };
 
 function getRmValueForKey(rms: Partial<Record<RmKey, number>>, key: RmKey): number | undefined {
@@ -80,7 +84,14 @@ function ExerciseRow({ exercise, rms }: { exercise: Exercise; rms: Partial<Recor
   );
 }
 
-export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
+export function RoutineWeekView({
+  week,
+  rms,
+  completedDays,
+  completionTarget,
+  completedCount,
+  onToggleDayCompleted,
+}: RoutineWeekViewProps) {
   const [selectedDayIndex, setSelectedDayIndex] = useState(0);
 
   useEffect(() => {
@@ -90,6 +101,7 @@ export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
   }, [week, selectedDayIndex]);
 
   const activeDay = week.days[selectedDayIndex] || week.days[0];
+  const isActiveDayCompleted = activeDay ? completedDays.includes(activeDay.day) : false;
 
   if (!activeDay) {
     return (
@@ -98,6 +110,9 @@ export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
           <h2 className="font-display text-2xl font-bold uppercase tracking-tighter text-on-surface">
             / PROTOCOLO SEMANA {week.week}
           </h2>
+          <p className="mt-1 font-body text-xs font-semibold uppercase tracking-widest text-on-surface/60">
+            PROGRESO {completedCount}/{completionTarget || 0} DIAS COMPLETADOS
+          </p>
         </header>
         <article className="bg-surface-low p-6 shadow-xl">
           <p className="font-body text-sm font-semibold uppercase tracking-widest text-on-surface/60">
@@ -114,6 +129,9 @@ export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
         <h2 className="font-display text-2xl font-bold uppercase tracking-tighter text-on-surface">
           / PROTOCOLO SEMANA {week.week}
         </h2>
+        <p className="mt-1 font-body text-xs font-semibold uppercase tracking-widest text-on-surface/60">
+          PROGRESO {completedCount}/{completionTarget || 0} DIAS COMPLETADOS
+        </p>
       </header>
 
       <div className="flex overflow-x-auto gap-2 pb-2">
@@ -137,10 +155,23 @@ export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
 
       <article className="bg-surface-low shadow-xl flex flex-col min-h-fit">
         <header className="bg-surface-highest p-4 border-b border-surface-highest flex justify-between items-center">
-          <h3 className="font-display text-xl font-bold text-primary uppercase tracking-tighter">{activeDay.day}</h3>
-          <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface/40">
-             {activeDay.exercises.length} BLOQUES
-          </span>
+          <div>
+            <h3 className="font-display text-xl font-bold text-primary uppercase tracking-tighter">{activeDay.day}</h3>
+            <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface/40">
+              {activeDay.exercises.length} BLOQUES
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => onToggleDayCompleted(activeDay.day)}
+            className={`border px-3 py-2 font-display text-[10px] font-semibold uppercase tracking-wider transition-colors ${
+              isActiveDayCompleted
+                ? 'border-primary bg-primary/15 text-primary'
+                : 'border-outline-variant text-on-surface/70 hover:bg-surface'
+            }`}
+          >
+            {isActiveDayCompleted ? 'Dia completado' : 'Marcar completado'}
+          </button>
         </header>
         <ul className="flex flex-col bg-surface flex-grow">
           {activeDay.exercises.map((exercise, idx) => (

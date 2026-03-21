@@ -204,6 +204,7 @@ export async function fetchUserState(userId: string, fallbackWeek: number): Prom
       selectedWeek: fallbackWeek,
       rms: {},
       onboardingCompleted: false,
+      completedDaysByWeek: {},
     };
   }
 
@@ -224,21 +225,25 @@ export async function fetchUserState(userId: string, fallbackWeek: number): Prom
       selectedWeek: fallbackWeek,
       rms: {},
       onboardingCompleted: false,
+      completedDaysByWeek: {},
     };
   }
 
   const row = data as DbUserStateRow;
+  const localState = getLocalUserState(userId, fallbackWeek);
 
   return {
     selectedWeek: row.selected_week || fallbackWeek,
     rms: normalizeRms(row.rms),
     onboardingCompleted: Boolean(row.onboarding_completed),
+    completedDaysByWeek: localState.completedDaysByWeek ?? {},
   };
 }
 
 export async function saveUserState(userId: string, userState: UserState): Promise<void> {
+  saveLocalUserState(userId, userState);
+
   if (!isSupabaseConfigured || !supabase) {
-    saveLocalUserState(userId, userState);
     return;
   }
 

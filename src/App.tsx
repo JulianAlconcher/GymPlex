@@ -37,11 +37,12 @@ function upsertWeekList(weeks: TrainingWeek[], weekNumber: number, days: Trainin
   return [...filtered, { week: weekNumber, days }].sort((a, b) => a.week - b.week);
 }
 
-function defaultUserState(fallbackWeek: number): UserState {
+function defaultUserState(): UserState {
   return {
-    selectedWeek: fallbackWeek,
+    selectedWeek: 1,
     rms: {},
     onboardingCompleted: false,
+    completedDaysByWeek: {},
   };
 }
 
@@ -54,11 +55,13 @@ export default function App() {
   const [users, setUsers] = useState<AppUser[]>([]);
   const [routineWeeks, setRoutineWeeks] = useState<TrainingWeek[]>([]);
   const [selectedUserId, setSelectedUserId] = useState('');
+  const [isOptionsOpen, setIsOptionsOpen] = useState(false);
   const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
   const [userState, setUserState] = useState<UserState>({
     selectedWeek: 1,
     rms: {},
     onboardingCompleted: false,
+    completedDaysByWeek: {},
   });
 
   const availableWeeks = useMemo(() => routineWeeks.map((item) => item.week), [routineWeeks]);
@@ -95,11 +98,11 @@ export default function App() {
         setSelectedUserId(initialUserId);
 
         if (initialUserId) {
-          const state = await fetchUserState(initialUserId, suggestedWeek);
+          const state = await fetchUserState(initialUserId, 1);
           if (!mounted) return;
           setUserState(state);
         } else {
-          setUserState(defaultUserState(suggestedWeek));
+          setUserState(defaultUserState());
         }
       } catch (error) {
         if (!mounted) return;
@@ -129,7 +132,7 @@ export default function App() {
       setSelectedUser(selectedUserId);
 
       try {
-        const state = await fetchUserState(selectedUserId, suggestedWeek);
+        const state = await fetchUserState(selectedUserId, 1);
         if (!mounted) return;
         setUserState(state);
       } catch (error) {
@@ -146,6 +149,7 @@ export default function App() {
   }, [hasConfirmedUser, selectedUserId, suggestedWeek]);
 
   useEffect(() => {
+    setIsOptionsOpen(false);
     setIsAdminPanelOpen(false);
   }, [selectedUserId]);
 
@@ -154,13 +158,19 @@ export default function App() {
     [users, selectedUserId]
   );
 
-  const selectedWeek = userState.selectedWeek || suggestedWeek;
+  const selectedWeek = userState.selectedWeek || 1;
   const selectedWeekData =
     routineWeeks.find((week) => week.week === selectedWeek) ??
     routineWeeks[0] ?? {
       week: 1,
       days: [],
     };
+  const visibleDays =
+    selectedUser?.fullName === 'Francisco Ruiz Gomez' ? selectedWeekData.days : selectedWeekData.days.slice(0, 4);
+  const completionTarget = Math.min(4, visibleDays.length);
+  const currentWeekKey = String(selectedWeekData.week);
+  const completedDaysForWeek = userState.completedDaysByWeek[currentWeekKey] ?? [];
+  const completedVisibleDays = visibleDays.filter((day) => completedDaysForWeek.includes(day.day)).length;
 
   async function persistUserState(next: UserState) {
     if (!selectedUserId) {
@@ -181,7 +191,7 @@ export default function App() {
       ...userState,
       rms,
       onboardingCompleted: true,
-      selectedWeek: userState.selectedWeek || suggestedWeek,
+      selectedWeek: userState.selectedWeek || 1,
     });
   }
 
@@ -197,6 +207,37 @@ export default function App() {
       ...userState,
       rms,
       onboardingCompleted: true,
+    });
+  }
+
+  async function handleToggleDayCompleted(dayName: string) {
+    const weekKey = String(selectedWeekData.week);
+    const currentCompleted = userState.completedDaysByWeek[weekKey] ?? [];
+    const isCurrentlyCompleted = currentCompleted.includes(dayName);
+    const nextWeekCompleted = isCurrentlyCompleted
+      ? currentCompleted.filter((entry) => entry !== dayName)
+      : [...currentCompleted, dayName];
+
+    let nextSelectedWeek = userState.selectedWeek || 1;
+    if (!isCurrentlyCompleted && completionTarget > 0) {
+      const visibleDayNames = new Set(visibleDays.map((day) => day.day));
+      const completedVisibleCount = nextWeekCompleted.filter((entry) => visibleDayNames.has(entry)).length;
+
+      if (completedVisibleCount >= completionTarget) {
+        const nextWeek = availableWeeks.find((week) => week > selectedWeekData.week);
+        if (typeof nextWeek === 'number') {
+          nextSelectedWeek = nextWeek;
+        }
+      }
+    }
+
+    await persistUserState({
+      ...userState,
+      selectedWeek: nextSelectedWeek,
+      completedDaysByWeek: {
+        ...userState.completedDaysByWeek,
+        [weekKey]: nextWeekCompleted,
+      },
     });
   }
 
@@ -330,37 +371,34 @@ export default function App() {
           </p>
         ) : null}
 
+        <RoutineWeekView
+          week={{
+            ...selectedWeekData,
+            days: visibleDays,
+          }}
+          rms={userState.rms}
+          completedDays={completedDaysForWeek}
+          completionTarget={completionTarget}
+          completedCount={completedVisibleDays}
+          onToggleDayCompleted={handleToggleDayCompleted}
+        />
+
         <section className="bg-surface-low p-6">
-          <UserSelector users={users} selectedUserId={selectedUserId} onChange={setSelectedUserId} />
+          <button
+            type="button"
+            onClick={() => setIsOptionsOpen((prev) => !prev)}
+            className="w-full border border-outline-variant px-4 py-3 font-display text-xs uppercase tracking-wider text-on-surface/80 hover:bg-surface-highest"
+          >
+            {isOptionsOpen ? 'Ocultar opciones' : 'Mostrar opciones'}
+          </button>
         </section>
 
-        {selectedUser?.isAdmin ? (
-          <section className="bg-surface-low p-6">
-            <button
-              type="button"
-              onClick={() => setIsAdminPanelOpen((prev) => !prev)}
-              className="border border-primary px-4 py-3 font-display text-xs uppercase tracking-wider text-primary hover:bg-primary/10"
-            >
-              {isAdminPanelOpen ? 'Cerrar Panel Admin' : 'Abrir Panel Admin'}
-            </button>
-          </section>
-        ) : null}
-
-        {selectedUser?.isAdmin && isAdminPanelOpen ? (
-          <AdminPanel
-            users={users}
-            routineWeeks={routineWeeks}
-            onCreateUser={handleCreateUser}
-            onToggleAdmin={handleToggleAdmin}
-            onSaveRoutineWeek={handleSaveRoutineWeek}
-            onSeedRoutine={handleSeedRoutine}
-          />
-        ) : null}
-
-        {!userState.onboardingCompleted ? (
-          <OnboardingForm initialRms={userState.rms} onSave={handleOnboardingSave} />
-        ) : (
+        {isOptionsOpen ? (
           <div className="space-y-8">
+            <section className="bg-surface-low p-6">
+              <UserSelector users={users} selectedUserId={selectedUserId} onChange={setSelectedUserId} />
+            </section>
+
             <WeekSelector
               availableWeeks={availableWeeks}
               selectedWeek={selectedWeekData.week}
@@ -371,20 +409,36 @@ export default function App() {
               }}
             />
 
-            <RmEditor rms={userState.rms} onSave={handleRmsUpdate} />
+            {!userState.onboardingCompleted ? (
+              <OnboardingForm initialRms={userState.rms} onSave={handleOnboardingSave} />
+            ) : (
+              <RmEditor rms={userState.rms} onSave={handleRmsUpdate} />
+            )}
 
-            <RoutineWeekView
-              week={{
-                ...selectedWeekData,
-                days:
-                  selectedUser?.fullName === 'Francisco Ruiz Gomez'
-                    ? selectedWeekData.days
-                    : selectedWeekData.days.slice(0, 4),
-              }}
-              rms={userState.rms}
-            />
+            {selectedUser?.isAdmin ? (
+              <section className="bg-surface-low p-6">
+                <button
+                  type="button"
+                  onClick={() => setIsAdminPanelOpen((prev) => !prev)}
+                  className="border border-primary px-4 py-3 font-display text-xs uppercase tracking-wider text-primary hover:bg-primary/10"
+                >
+                  {isAdminPanelOpen ? 'Cerrar Panel Admin' : 'Abrir Panel Admin'}
+                </button>
+              </section>
+            ) : null}
+
+            {selectedUser?.isAdmin && isAdminPanelOpen ? (
+              <AdminPanel
+                users={users}
+                routineWeeks={routineWeeks}
+                onCreateUser={handleCreateUser}
+                onToggleAdmin={handleToggleAdmin}
+                onSaveRoutineWeek={handleSaveRoutineWeek}
+                onSeedRoutine={handleSeedRoutine}
+              />
+            ) : null}
           </div>
-        )}
+        ) : null}
 
         {isBusy ? (
           <p className="text-[10px] font-semibold uppercase tracking-widest text-on-surface/50">Sincronizando cambios...</p>

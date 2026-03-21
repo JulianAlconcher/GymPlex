@@ -36,6 +36,7 @@ export type UserState = {
   selectedWeek: number;
   rms: Partial<Record<RmKey, number>>;
   onboardingCompleted: boolean;
+  completedDaysByWeek: Record<string, string[]>;
 };
 
 export type StoredAppState = Record<string, UserState>;

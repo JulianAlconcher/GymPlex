@@ -34,6 +34,7 @@ export function getUserState(user: string, fallbackWeek: number): UserState {
       selectedWeek: fallbackWeek,
       rms: {},
       onboardingCompleted: false,
+      completedDaysByWeek: {},
     };
   }
 
@@ -50,6 +51,8 @@ export function getUserState(user: string, fallbackWeek: number): UserState {
       selectedWeek: state.selectedWeek || fallbackWeek,
       rms: migratedRms,
       onboardingCompleted: state.onboardingCompleted || false,
+      completedDaysByWeek:
+        state.completedDaysByWeek && typeof state.completedDaysByWeek === 'object' ? state.completedDaysByWeek : {},
     }
   );
 }
