@@ -91,6 +91,23 @@ export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
 
   const activeDay = week.days[selectedDayIndex] || week.days[0];
 
+  if (!activeDay) {
+    return (
+      <section className="space-y-6">
+        <header className="border-l-2 border-primary pl-4">
+          <h2 className="font-display text-2xl font-bold uppercase tracking-tighter text-on-surface">
+            / PROTOCOLO SEMANA {week.week}
+          </h2>
+        </header>
+        <article className="bg-surface-low p-6 shadow-xl">
+          <p className="font-body text-sm font-semibold uppercase tracking-widest text-on-surface/60">
+            Esta semana no tiene días cargados todavía.
+          </p>
+        </article>
+      </section>
+    );
+  }
+
   return (
     <section className="space-y-6">
       <header className="border-l-2 border-primary pl-4">

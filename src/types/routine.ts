@@ -39,3 +39,9 @@ export type UserState = {
 };
 
 export type StoredAppState = Record<string, UserState>;
+
+export type AppUser = {
+  id: string;
+  fullName: string;
+  isAdmin: boolean;
+};
