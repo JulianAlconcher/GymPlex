@@ -28,39 +28,46 @@ export function WeekSelector({
   }
 
   return (
-    <section className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-      <div className="space-y-3">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <p className="text-sm font-semibold text-slate-800">Semana activa: {selectedWeek}</p>
-          <button
-            type="button"
-            className="rounded-xl border border-brand-700 px-3 py-2 text-xs font-semibold text-brand-700 transition hover:bg-brand-50"
-            onClick={onUseSuggested}
-          >
-            Ir a sugerida (Semana {suggestedWeek})
-          </button>
+    <section className="bg-surface-low shadow-xl">
+      <div className="flex flex-col gap-4 border-l-2 border-primary bg-surface-highest p-6 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <h2 className="font-display text-xl font-bold uppercase tracking-tighter text-on-surface">
+            MATRIZ ACTIVA: SEMANA {selectedWeek}
+          </h2>
+          <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface/60">
+            SELECCIONA EL BLOQUE DE ENTRENAMIENTO
+          </p>
         </div>
+        <button
+          type="button"
+          className="border border-primary px-6 py-3 font-display text-xs uppercase tracking-wider text-primary transition-colors hover:bg-primary/10"
+          onClick={onUseSuggested}
+        >
+          Ir a Toca: Sem {suggestedWeek}
+        </button>
+      </div>
 
-        <div className="flex items-center gap-2">
+      <div className="p-6">
+        <div className="mb-6 flex justify-between gap-2 border-b border-surface-highest pb-4">
           <button
             type="button"
             onClick={goPrev}
             disabled={!hasPrev}
-            className="rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+            className="border-b-2 border-transparent px-2 py-1 font-display uppercase tracking-widest text-on-surface/70 transition-colors hover:border-outline-variant hover:text-on-surface disabled:cursor-not-allowed disabled:opacity-40"
           >
-            Anterior
+            ← PREV
           </button>
           <button
             type="button"
             onClick={goNext}
             disabled={!hasNext}
-            className="rounded-xl border border-slate-300 px-3 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
+            className="border-b-2 border-transparent px-2 py-1 font-display uppercase tracking-widest text-on-surface/70 transition-colors hover:border-outline-variant hover:text-on-surface disabled:cursor-not-allowed disabled:opacity-40"
           >
-            Siguiente
+            NEXT →
           </button>
         </div>
 
-        <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-6">
+        <div className="grid grid-cols-4 gap-[2px] bg-surface-highest p-[2px] sm:grid-cols-6 lg:grid-cols-10">
           {availableWeeks.map((week) => {
             const isActive = week === selectedWeek;
             return (
@@ -68,13 +75,14 @@ export function WeekSelector({
                 key={week}
                 type="button"
                 onClick={() => onChange(week)}
-                className={`rounded-xl border px-3 py-2 text-sm font-semibold transition ${
+                className={`flex flex-col items-center justify-center p-3 font-display text-lg font-bold transition-colors ${
                   isActive
-                    ? 'border-brand-700 bg-brand-700 text-white'
-                    : 'border-slate-300 bg-white text-slate-700 hover:bg-slate-50'
+                    ? 'bg-gradient-to-br from-primary-container to-inverse-primary text-white'
+                    : 'bg-surface hover:bg-surface-low text-on-surface'
                 }`}
               >
-                Semana {week}
+                <span className="text-[10px] font-semibold uppercase tracking-widest opacity-60">WK</span>
+                {week}
               </button>
             );
           })}

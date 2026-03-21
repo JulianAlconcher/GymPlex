@@ -14,6 +14,8 @@ export type Exercise = {
   notes?: string;
   percentage?: number;
   rmKey?: RmKey;
+  isSuperset?: boolean;
+  supersetExercises?: string[];
 };
 
 export type TrainingDay = {

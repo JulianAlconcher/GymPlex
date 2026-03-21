@@ -1,0 +1,152 @@
+.ag-preloader-root {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background-color: #131313; /* Iron Precision bg */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    color: #e2e2e2;
+    pointer-events: all;
+    overflow: hidden;
+}
+
+.ag-preloader-root.exit {
+    opacity: 0;
+    transform: scale(1.05); /* Zoom in ligeramente y se apaga */
+    pointer-events: none;
+}
+
+.ag-noise-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.05;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    animation: ag-noise 0.2s steps(4) infinite;
+}
+
+@keyframes ag-noise {
+    0% { transform: translate(0, 0) }
+    10% { transform: translate(-5%, -5%) }
+    20% { transform: translate(-10%, 5%) }
+    30% { transform: translate(5%, -10%) }
+    40% { transform: translate(-5%, 15%) }
+    50% { transform: translate(-10%, 5%) }
+    60% { transform: translate(15%, 0) }
+    70% { transform: translate(0, 10%) }
+    80% { transform: translate(-15%, 0) }
+    90% { transform: translate(10%, 5%) }
+    100% { transform: translate(5%, 0) }
+}
+
+.ag-preloader-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* Logo entra desde la Izquierda */
+.ag-preloader-logo-wrapper {
+    margin-bottom: 0.5rem;
+    transform: translateX(-150px);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(1, 0, 0, 1) 0.2s, opacity 1.2s ease 0.2s;
+}
+
+/* Letras de GYMPLEX entran desde la Derecha (debajo del logo) */
+.ag-preloader-branding {
+    transform: translateX(150px);
+    opacity: 0;
+    transition: transform 1.2s cubic-bezier(1, 0, 0, 1) 0.2s, opacity 1.2s ease 0.2s;
+    text-align: center;
+}
+
+.ag-preloader-root.ready .ag-preloader-logo-wrapper {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.ag-preloader-root.ready .ag-preloader-branding {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.ag-preloader-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    margin: 0;
+    line-height: 1;
+    color: #e2e2e2;
+}
+
+.ag-preloader-subtitle {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: #ff2a2a; /* Red Vibrante */
+    margin-top: 0.75rem;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 0.1), transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.ag-preloader-root.ready .ag-preloader-subtitle {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.2s; /* Aparece después del cruce de Logo y Título */
+}
+
+/* Botón entrar */
+.ag-preloader-enter-btn {
+    margin-top: 2rem;
+    background: none;
+    border: none;
+    color: #ff2a2a;
+    font-size: 1.1rem;
+    letter-spacing: 0.2em;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    position: relative;
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1), color 0.3s ease;
+}
+
+.ag-preloader-root.ready .ag-preloader-enter-btn {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 1.6s;
+}
+
+.ag-preloader-enter-btn:hover {
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+.ag-preloader-enter-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0.5rem;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #ff2a2a;
+    transform: translateX(-50%);
+    transition: width 0.3s ease;
+}
+
+.ag-preloader-enter-btn:hover::after {
+    width: 60%;
+}

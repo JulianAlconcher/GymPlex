@@ -1,0 +1,2218 @@
+{
+  "program": [
+    {
+      "week": 1,
+      "variant": "A",
+      "accessories": {
+        "reps": "10-15",
+        "rir": "2-3"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 8,
+            "percentage": 67.5
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Chest Dip"
+                },
+                {
+                  "name": "Peck Deck"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 6,
+            "percentage": 65
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "Remo a 90\u00b0",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Pullover"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 8,
+            "percentage": 67.5
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Step-ups"
+            },
+            {
+              "name": "Gemelos"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": 10,
+            "percentage": 60
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 6,
+            "percentage": 65
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "variant": "B",
+      "accessories": {
+        "reps": "10-15",
+        "rir": "2-3"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 8,
+            "percentage": 70
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Floor Press"
+                },
+                {
+                  "name": "Diamond Push-ups"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 6,
+            "percentage": 67.5
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "T-Bar Row",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Straight-Arm Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 8,
+            "percentage": 70
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Gemelos"
+            },
+            {
+              "name": "Goblet Squat EMOM",
+              "duration": "8 min",
+              "type": "finisher"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": 10,
+            "percentage": 62.5
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 6,
+            "percentage": 67.5
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "variant": "A",
+      "accessories": {
+        "reps": "10-15",
+        "rir": "2-3"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 7,
+            "percentage": 72.5
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Chest Dip"
+                },
+                {
+                  "name": "Peck Deck"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": "5-6",
+            "percentage": 70
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "Remo a 90\u00b0",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Pullover"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 7,
+            "percentage": 72.5
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Step-ups"
+            },
+            {
+              "name": "Gemelos"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": 9,
+            "percentage": 65
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 6,
+            "percentage": 70
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "variant": "B",
+      "accessories": {
+        "reps": "8-12",
+        "rir": "1-2"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 6,
+            "percentage": 75
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Floor Press"
+                },
+                {
+                  "name": "Diamond Push-Ups"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 5,
+            "percentage": 72.5
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "T-Bar Row",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Straight-Arm Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 6,
+            "percentage": 75
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Gemelos"
+            },
+            {
+              "name": "Goblet Squat EMOM",
+              "duration": "8 min",
+              "type": "finisher"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": 8,
+            "percentage": 67.5
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 5,
+            "percentage": 72.5
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "variant": "A",
+      "accessories": {
+        "reps": "8-12",
+        "rir": "1-2"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 6,
+            "percentage": 77.5
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Chest Dip"
+                },
+                {
+                  "name": "Peck Deck"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 5,
+            "percentage": 75
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "Remo a 90\u00b0",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Pullover"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 5,
+            "percentage": 77.5
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Step-ups"
+            },
+            {
+              "name": "Gemelos"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": 8,
+            "percentage": 70
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 5,
+            "percentage": 75
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "deload": true,
+      "accessories": {
+        "reps": "liviano",
+        "rir": "3+"
+      }
+    },
+    {
+      "week": 7,
+      "variant": "A",
+      "accessories": {
+        "reps": "6-10",
+        "rir": "0-1"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 5,
+            "percentage": 80
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Chest Dip"
+                },
+                {
+                  "name": "Peck Deck"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 4,
+            "percentage": 77.5
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "Remo a 90\u00b0",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Pullover"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 5,
+            "percentage": 80
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Step-ups"
+            },
+            {
+              "name": "Gemelos"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": "6-8",
+            "percentage": 72.5
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 4,
+            "percentage": 77.5
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "variant": "B",
+      "accessories": {
+        "reps": "6-10",
+        "rir": "0-1"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 4,
+            "percentage": 82.5
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Floor Press"
+                },
+                {
+                  "name": "Diamond Push-Ups"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": "3-4",
+            "percentage": 80
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "T-Bar Row",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Straight-Arm Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 4,
+            "percentage": 82.5
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Gemelos"
+            },
+            {
+              "name": "Goblet Squat EMOM",
+              "duration": "8 min",
+              "type": "finisher"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 4,
+            "reps": 6,
+            "percentage": 75
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 4,
+            "percentage": 80
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 9,
+      "variant": "A",
+      "accessories": {
+        "reps": "6-10",
+        "rir": "0-1"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 4,
+            "percentage": 85
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Chest Dip"
+                },
+                {
+                  "name": "Peck Deck"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 3,
+            "percentage": 82.5
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "Remo a 90\u00b0",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Pullover"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 4,
+            "percentage": 85
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Step-ups"
+            },
+            {
+              "name": "Gemelos"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 3,
+            "reps": 6,
+            "percentage": 75
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": "3-4",
+            "percentage": 82.5
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 10,
+      "variant": "B",
+      "accessories": {
+        "reps": "6-8",
+        "rir": "0-1"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": 4,
+            "reps": 3,
+            "percentage": 87.5
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Floor Press"
+                },
+                {
+                  "name": "Diamond Push-Ups"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 3,
+            "percentage": 82.5
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "T-Bar Row",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Straight-Arm Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": 3,
+            "percentage": 87.5
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Gemelos"
+            },
+            {
+              "name": "Goblet Squat EMOM",
+              "duration": "8 min",
+              "type": "finisher"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 3,
+            "reps": "4-5",
+            "percentage": 72.5
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": 4,
+            "reps": 3,
+            "percentage": 85
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 11,
+      "variant": "A",
+      "accessories": {
+        "reps": "6-8",
+        "rir": "0-1"
+      },
+      "days": [
+        {
+          "day": "PUSH",
+          "main": {
+            "name": "Bench Press",
+            "sets": "3-4",
+            "reps": "2-3",
+            "percentage": 90
+          },
+          "exercises": [
+            {
+              "name": "Landmine Press"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Incline DB Press"
+                },
+                {
+                  "name": "Lateral Raise"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Chest Dip"
+                },
+                {
+                  "name": "Peck Deck"
+                }
+              ]
+            },
+            {
+              "name": "Overhead DB Extension"
+            }
+          ]
+        },
+        {
+          "day": "PULL",
+          "main": {
+            "name": "Deadlift",
+            "sets": 3,
+            "reps": 2,
+            "percentage": 85
+          },
+          "exercises": [
+            {
+              "name": "Pull-ups",
+              "sets": 4
+            },
+            {
+              "name": "Remo a 90\u00b0",
+              "sets": 4
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Gorilla Row"
+                },
+                {
+                  "name": "Shrugs"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Face Pull"
+                },
+                {
+                  "name": "Pullover"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Barbell Curl"
+                },
+                {
+                  "name": "Dumbbell Curl"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 1",
+          "main": {
+            "name": "Squat",
+            "sets": 3,
+            "reps": "2-3",
+            "percentage": 90
+          },
+          "exercises": [
+            {
+              "name": "Bulgarian Split Squat"
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Romanian Deadlift"
+                },
+                {
+                  "name": "Farmer Walk"
+                }
+              ]
+            },
+            {
+              "name": "Step-ups"
+            },
+            {
+              "name": "Gemelos"
+            }
+          ]
+        },
+        {
+          "day": "UPPER",
+          "main": {
+            "name": "Bench Volume",
+            "sets": 3,
+            "reps": "4-5",
+            "percentage": 70
+          },
+          "exercises": [
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Overhead Press"
+                },
+                {
+                  "name": "Lat Pulldown"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Fly"
+                },
+                {
+                  "name": "Seated Row"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "Cable Lateral Raise"
+                },
+                {
+                  "name": "Rear Delt Cable Fly"
+                }
+              ]
+            },
+            {
+              "type": "superset",
+              "exercises": [
+                {
+                  "name": "DB Curl"
+                },
+                {
+                  "name": "Triceps Pushdown"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "day": "LEGS 2",
+          "main": {
+            "name": "Trap Bar Deadlift",
+            "sets": "3-4",
+            "reps": "2-3",
+            "percentage": 87.5
+          },
+          "exercises": [
+            {
+              "name": "Leg Press"
+            },
+            {
+              "name": "Hip Thrust"
+            },
+            {
+              "name": "Lunge"
+            },
+            {
+              "name": "Back Extension"
+            },
+            {
+              "name": "Hanging Leg Raise"
+            },
+            {
+              "name": "Standing Calf Raise"
+            },
+            {
+              "name": "Kettlebell Swing"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 12,
+      "deload": true,
+      "accessories": {
+        "reps": "liviano",
+        "rir": "3+"
+      }
+    }
+  ]
+}

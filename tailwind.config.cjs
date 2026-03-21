@@ -4,14 +4,20 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: {
-          50: '#f2f8f7',
-          100: '#d7ece7',
-          500: '#2f7b6d',
-          700: '#235f54',
-          900: '#173f39'
-        }
-      }
+        surface: '#131313',
+        'surface-low': '#1b1b1b',
+        'surface-highest': '#353535',
+        primary: '#ff2a2a',
+        'primary-container': '#cc0000',
+        'inverse-primary': '#ff6666',
+        'on-surface': '#e2e2e2',
+        'outline-variant': '#603e39',
+        error: '#ff2a2a',
+      },
+      fontFamily: {
+        display: ['"Space Grotesk"', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
+      },
     }
   },
   plugins: []

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { KEY_LIFTS } from '../data/keyLifts';
 import { calculatePercentageLoad, formatKg } from '../lib/calculations';
 import type { Exercise, RmKey, TrainingWeek } from '../types/routine';
@@ -34,54 +35,102 @@ function ExerciseRow({ exercise, rms }: { exercise: Exercise; rms: Partial<Recor
   const hasPercentage = typeof exercise.percentage === 'number' && typeof exerciseRmKey === 'string';
   const rmValue = hasPercentage ? getRmValueForKey(rms, exerciseRmKey) : undefined;
   const calculatedWeight =
-    hasPercentage && typeof rmValue === 'number' ? calculatePercentageLoad(rmValue, exercise.percentage) : undefined;
+    hasPercentage && typeof rmValue === 'number' ? calculatePercentageLoad(rmValue, exercise.percentage as number) : undefined;
 
   return (
-    <li className="rounded-xl border border-slate-200 bg-slate-50 p-3">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="text-sm font-semibold text-slate-900">{exercise.name}</p>
-          <p className="text-xs text-slate-600">
-            {exercise.sets} series x {exercise.reps} reps
-            {exercise.notes ? ` (${exercise.notes})` : ''}
-          </p>
-        </div>
-
-        {hasPercentage ? (
-          rmValue ? (
-            <p className="text-sm font-semibold text-brand-900">
-              {exercise.percentage}% de {KEY_LIFTS[exerciseRmKey]}: {formatKg(calculatedWeight ?? 0)}
-            </p>
-          ) : (
-            <p className="text-xs font-medium text-amber-700">
-              Definí RM de {KEY_LIFTS[exerciseRmKey]} para calcular el peso.
-            </p>
-          )
+    <li className="flex flex-col gap-2 bg-surface p-4 sm:flex-row sm:items-center sm:justify-between border-b border-surface-highest last:border-b-0 border-l-2 border-transparent hover:border-outline-variant transition-colors">
+      <div className="flex-1">
+        {exercise.isSuperset ? (
+          <div>
+            <p className="font-display text-[10px] font-bold uppercase tracking-widest text-primary mb-1">BI-SERIE</p>
+            <div className="flex flex-col gap-1">
+              {exercise.supersetExercises?.map((ex, idx) => (
+                <p key={idx} className="font-display text-lg font-bold uppercase tracking-tight text-on-surface">• {ex}</p>
+              ))}
+            </div>
+          </div>
         ) : (
-          <p className="text-xs font-medium text-slate-500">Carga libre</p>
+          <p className="font-display text-lg font-bold uppercase tracking-tight text-on-surface">{exercise.name}</p>
         )}
+        <p className="font-body text-xs font-semibold uppercase tracking-wider text-on-surface/60 mt-1">
+          {exercise.sets} SETS × {exercise.reps} REPS
+          {exercise.notes ? ` // ${exercise.notes}` : ''}
+        </p>
       </div>
+
+      {hasPercentage ? (
+        rmValue ? (
+          <div className="flex flex-col sm:items-end">
+             <p className="font-display text-2xl font-bold text-primary">
+              {formatKg(calculatedWeight ?? 0)}
+            </p>
+            <p className="font-body text-xs uppercase tracking-widest text-on-surface/50">
+              {exercise.percentage}% {KEY_LIFTS[exerciseRmKey]}
+            </p>
+          </div>
+        ) : (
+          <p className="border border-outline-variant px-2 py-1 font-body text-[10px] uppercase text-outline-variant">
+            Sin datos RM
+          </p>
+        )
+      ) : (
+        <p className="font-display text-lg font-bold text-on-surface/40 uppercase">Libre</p>
+      )}
     </li>
   );
 }
 
 export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
-  return (
-    <section className="space-y-4">
-      <h2 className="text-xl font-bold text-slate-900">Semana {week.week}</h2>
+  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
 
-      <div className="grid gap-4 lg:grid-cols-2">
-        {week.days.map((day) => (
-          <article key={day.day} className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <h3 className="text-base font-semibold text-slate-900">{day.day}</h3>
-            <ul className="mt-3 space-y-2">
-              {day.exercises.map((exercise) => (
-                <ExerciseRow key={`${day.day}-${exercise.name}`} exercise={exercise} rms={rms} />
-              ))}
-            </ul>
-          </article>
-        ))}
+  useEffect(() => {
+    if (selectedDayIndex >= week.days.length) {
+      setSelectedDayIndex(0);
+    }
+  }, [week, selectedDayIndex]);
+
+  const activeDay = week.days[selectedDayIndex] || week.days[0];
+
+  return (
+    <section className="space-y-6">
+      <header className="border-l-2 border-primary pl-4">
+        <h2 className="font-display text-2xl font-bold uppercase tracking-tighter text-on-surface">
+          / PROTOCOLO SEMANA {week.week}
+        </h2>
+      </header>
+
+      <div className="flex overflow-x-auto gap-2 pb-2">
+        {week.days.map((day, idx) => {
+          const isActive = idx === selectedDayIndex;
+          return (
+            <button
+              key={day.day}
+              onClick={() => setSelectedDayIndex(idx)}
+              className={`whitespace-nowrap px-6 py-3 font-display text-sm font-bold uppercase tracking-wider transition-colors border-b-2 ${
+                isActive 
+                  ? 'bg-surface-highest text-primary border-primary' 
+                  : 'bg-surface-low text-on-surface/50 border-transparent hover:text-on-surface hover:bg-surface-highest'
+              }`}
+            >
+              {day.day}
+            </button>
+          );
+        })}
       </div>
+
+      <article className="bg-surface-low shadow-xl flex flex-col min-h-fit">
+        <header className="bg-surface-highest p-4 border-b border-surface-highest flex justify-between items-center">
+          <h3 className="font-display text-xl font-bold text-primary uppercase tracking-tighter">{activeDay.day}</h3>
+          <span className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface/40">
+             {activeDay.exercises.length} BLOQUES
+          </span>
+        </header>
+        <ul className="flex flex-col bg-surface flex-grow">
+          {activeDay.exercises.map((exercise, idx) => (
+            <ExerciseRow key={`${activeDay.day}-${exercise.name}-${idx}`} exercise={exercise} rms={rms} />
+          ))}
+        </ul>
+      </article>
     </section>
   );
 }

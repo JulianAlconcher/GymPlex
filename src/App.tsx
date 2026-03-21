@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 
 import { OnboardingForm } from './components/OnboardingForm';
+import { Preloader } from './components/Preloader';
 import { RmEditor } from './components/RmEditor';
 import { RoutineWeekView } from './components/RoutineWeekView';
 import { UserSelector } from './components/UserSelector';
@@ -25,6 +26,7 @@ export default function App() {
 
   const [selectedUserName, setSelectedUserName] = useState<string>(() => resolveInitialUser(USERS));
   const [hasConfirmedUser, setHasConfirmedUser] = useState(false);
+  const [hasPassedPreloader, setHasPassedPreloader] = useState(false);
   const [userState, setUserState] = useState<UserState>(() => getUserState(USERS[0], suggestedWeek));
 
   useEffect(() => {
@@ -72,21 +74,27 @@ export default function App() {
   const selectedWeek = userState.selectedWeek || suggestedWeek;
   const selectedWeekData = routineData.weeks.find((week) => week.week === selectedWeek) ?? routineData.weeks[0];
 
+  if (!hasPassedPreloader) {
+    return <Preloader onEnter={() => setHasPassedPreloader(true)} />;
+  }
+
   if (!hasConfirmedUser) {
     return (
-      <div className="min-h-screen bg-gradient-to-b from-brand-50 to-slate-100">
-        <main className="mx-auto flex min-h-screen w-full max-w-2xl items-center px-4 py-8 sm:px-6 lg:px-8">
-          <section className="w-full space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-            <h1 className="text-xl font-bold text-slate-900">Seleccioná tu usuario</h1>
-            <p className="text-sm text-slate-600">Antes de ver la rutina, elegí quién está usando la app.</p>
+      <div className="min-h-screen bg-surface font-body text-on-surface">
+        <main className="mx-auto flex min-h-screen w-full max-w-2xl items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
+          <section className="w-full space-y-6 bg-surface-low p-8 shadow-2xl">
+            <div className="border-l-2 border-primary pl-4">
+              <h1 className="font-display text-3xl font-bold uppercase tracking-tighter text-on-surface">ACCESO CORE</h1>
+              <p className="mt-1 text-sm text-on-surface/60">SELECCIONÁ TU PERFIL PARA INICIAR LA MATRIZ DE CARGA</p>
+            </div>
             <UserSelector users={USERS} selectedUser={selectedUserName} onChange={setSelectedUserName} />
             <button
               type="button"
               disabled={!selectedUserName}
               onClick={() => setHasConfirmedUser(true)}
-              className="rounded-xl bg-brand-700 px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-900 disabled:cursor-not-allowed disabled:bg-slate-300"
+              className="mt-6 w-full bg-gradient-to-br from-primary-container to-inverse-primary px-6 py-4 font-display text-base uppercase tracking-tight text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:bg-surface-highest disabled:from-surface-highest disabled:to-surface-highest disabled:text-on-surface/30"
             >
-              Entrar
+              Inicializar
             </button>
           </section>
         </main>
@@ -95,22 +103,21 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-brand-50 to-slate-100">
-      <main className="mx-auto w-full max-w-6xl space-y-5 px-4 py-8 sm:px-6 lg:px-8">
-        <UserSelector users={USERS} selectedUser={selectedUserName} onChange={setSelectedUserName} />
-
-        <header className="rounded-2xl bg-brand-900 p-6 text-white shadow-lg">
-          <p className="text-xs uppercase tracking-[0.24em] text-brand-100">GymPlex</p>
-          <h1 className="mt-2 text-2xl font-bold">Planificador de rutina semanal</h1>
-          <p className="mt-2 text-sm text-brand-100">
-            Estructura simple para 5 usuarios, sin login, con cálculo automático por RM y porcentaje.
-          </p>
+    <div className="min-h-screen bg-surface pb-20 font-body text-on-surface">
+      <main className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
+        <header className="border-l-[3px] border-primary bg-surface-low p-6 shadow-xl">
+          <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-primary">GYMPLEX</p>
+          <h1 className="mt-1 font-display text-4xl font-bold uppercase tracking-tighter text-on-surface">DATA TRACKER</h1>
         </header>
+
+        <section className="bg-surface-low p-6">
+          <UserSelector users={USERS} selectedUser={selectedUserName} onChange={setSelectedUserName} />
+        </section>
 
         {!userState.onboardingCompleted ? (
           <OnboardingForm initialRms={userState.rms} onSave={handleOnboardingSave} />
         ) : (
-          <>
+          <div className="space-y-8">
             <WeekSelector
               availableWeeks={availableWeeks}
               selectedWeek={selectedWeekData.week}
@@ -121,8 +128,14 @@ export default function App() {
 
             <RmEditor rms={userState.rms} onSave={handleRmsUpdate} />
 
-            <RoutineWeekView week={selectedWeekData} rms={userState.rms} />
-          </>
+            <RoutineWeekView 
+              week={{
+                ...selectedWeekData,
+                days: selectedUserName === 'Francisco Ruiz Gomez' ? selectedWeekData.days : selectedWeekData.days.slice(0, 4)
+              }} 
+              rms={userState.rms} 
+            />
+          </div>
         )}
       </main>
     </div>
