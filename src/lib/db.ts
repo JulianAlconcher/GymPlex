@@ -25,7 +25,7 @@ function toLocalUsers(): AppUser[] {
   return USERS.map((fullName) => ({
     id: fullName,
     fullName,
-    isAdmin: false,
+    isAdmin: fullName === 'Francisco Ruiz Gomez',
   }));
 }
 
