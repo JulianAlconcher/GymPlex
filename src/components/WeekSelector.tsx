@@ -28,23 +28,25 @@ export function WeekSelector({
   }
 
   return (
-    <section className="bg-surface-low shadow-xl">
-      <div className="flex flex-col gap-4 border-l-2 border-primary bg-surface-highest p-6 sm:flex-row sm:items-center sm:justify-between">
-        <div>
-          <h2 className="font-display text-xl font-bold uppercase tracking-tighter text-on-surface">
-            MATRIZ ACTIVA: SEMANA {selectedWeek}
-          </h2>
-          <p className="font-body text-xs font-semibold uppercase tracking-widest text-on-surface/60">
-            SELECCIONA EL BLOQUE DE ENTRENAMIENTO
+    <section className="bg-surface-lowest">
+      <div className="flex flex-col gap-4 border-l-[3px] border-primary bg-surface-highest p-5 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col justify-center">
+          <p className="font-body text-[10px] font-bold uppercase tracking-[0.2em] text-on-surface/50 mb-1">
+            TRAINING BLOCK
           </p>
+          <h2 className="font-display text-3xl font-bold uppercase tracking-tighter text-white leading-none">
+            WEEK {selectedWeek}
+          </h2>
         </div>
-        <button
-          type="button"
-          className="border border-primary px-6 py-3 font-display text-xs uppercase tracking-wider text-primary transition-colors hover:bg-primary/10"
-          onClick={onUseSuggested}
-        >
-          Ir a Toca: Sem {suggestedWeek}
-        </button>
+        {selectedWeek !== suggestedWeek && (
+          <button
+            type="button"
+            className="border border-surface-highest bg-surface hover:bg-surface-low px-6 py-3 font-display text-[10px] font-bold uppercase tracking-[0.1em] text-on-surface transition-all hover:text-white active:scale-[0.98]"
+            onClick={onUseSuggested}
+          >
+            JUMP TO WEEK {suggestedWeek}
+          </button>
+        )}
       </div>
 
       <div className="p-6">
@@ -67,7 +69,7 @@ export function WeekSelector({
           </button>
         </div>
 
-        <div className="grid grid-cols-4 gap-[2px] bg-surface-highest p-[2px] sm:grid-cols-6 lg:grid-cols-10">
+        <div className="flex overflow-x-auto gap-[2px] bg-surface-highest p-[2px] snap-x snap-mandatory [&::-webkit-scrollbar]:hidden">
           {availableWeeks.map((week) => {
             const isActive = week === selectedWeek;
             return (
@@ -75,7 +77,7 @@ export function WeekSelector({
                 key={week}
                 type="button"
                 onClick={() => onChange(week)}
-                className={`flex flex-col items-center justify-center p-3 font-display text-lg font-bold transition-colors ${
+                className={`flex-none w-[22%] min-w-[70px] sm:flex-1 sm:w-auto snap-start flex flex-col items-center justify-center p-3 font-display text-lg font-bold transition-colors ${
                   isActive
                     ? 'bg-gradient-to-br from-primary-container to-inverse-primary text-white'
                     : 'bg-surface hover:bg-surface-low text-on-surface'

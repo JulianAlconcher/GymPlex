@@ -7,6 +7,7 @@ import { RoutineWeekView } from './components/RoutineWeekView';
 import { UserSelector } from './components/UserSelector';
 import { WeekSelector } from './components/WeekSelector';
 import { PLAN_START_DATE, routineData } from './data/routineData';
+import { BottomNav, type TabId } from './components/BottomNav';
 import { USERS } from './data/users';
 import { getSelectedUser, getUserState, saveUserState, setSelectedUser } from './lib/storage';
 import { getSuggestedWeek } from './lib/week';
@@ -28,6 +29,8 @@ export default function App() {
   const [hasConfirmedUser, setHasConfirmedUser] = useState(false);
   const [hasPassedPreloader, setHasPassedPreloader] = useState(false);
   const [userState, setUserState] = useState<UserState>(() => getUserState(USERS[0], suggestedWeek));
+  const [activeTab, setActiveTab] = useState<TabId>('routine');
+  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
 
   useEffect(() => {
     if (!hasConfirmedUser || !selectedUserName) {
@@ -103,38 +106,52 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-surface pb-20 font-body text-on-surface">
+    <div className="min-h-screen bg-surface pb-24 font-body text-on-surface">
       <main className="mx-auto w-full max-w-6xl space-y-8 px-4 py-8 sm:px-6 lg:px-8">
         <header className="border-l-[3px] border-primary bg-surface-low p-6 shadow-xl">
           <p className="font-display text-xs font-bold uppercase tracking-[0.2em] text-primary">GYMPLEX</p>
-          <h1 className="mt-1 font-display text-4xl font-bold uppercase tracking-tighter text-on-surface">DATA TRACKER</h1>
+          <h1 className="mt-1 font-display text-4xl font-bold uppercase tracking-tighter text-on-surface">
+            {activeTab === 'routine' ? 'DATA TRACKER' : activeTab === 'calibrator' ? '1RM CALIBRATOR' : 'PERFIL DE USUARIO'}
+          </h1>
         </header>
-
-        <section className="bg-surface-low p-6">
-          <UserSelector users={USERS} selectedUser={selectedUserName} onChange={setSelectedUserName} />
-        </section>
 
         {!userState.onboardingCompleted ? (
           <OnboardingForm initialRms={userState.rms} onSave={handleOnboardingSave} />
         ) : (
           <div className="space-y-8">
-            <WeekSelector
-              availableWeeks={availableWeeks}
-              selectedWeek={selectedWeekData.week}
-              suggestedWeek={suggestedWeek}
-              onChange={handleWeekChange}
-              onUseSuggested={() => handleWeekChange(suggestedWeek)}
-            />
+            {activeTab === 'profile' && (
+              <section className="bg-surface-low p-6 shadow-xl">
+                <UserSelector users={USERS} selectedUser={selectedUserName} onChange={setSelectedUserName} />
+              </section>
+            )}
 
-            <RmEditor rms={userState.rms} onSave={handleRmsUpdate} />
+            {activeTab === 'routine' && (
+              <>
+                <WeekSelector
+                  availableWeeks={availableWeeks}
+                  selectedWeek={selectedWeekData.week}
+                  suggestedWeek={suggestedWeek}
+                  onChange={handleWeekChange}
+                  onUseSuggested={() => handleWeekChange(suggestedWeek)}
+                />
 
-            <RoutineWeekView 
-              week={{
-                ...selectedWeekData,
-                days: selectedUserName === 'Francisco Ruiz Gomez' ? selectedWeekData.days : selectedWeekData.days.slice(0, 4)
-              }} 
-              rms={userState.rms} 
-            />
+                <RoutineWeekView 
+                  week={{
+                    ...selectedWeekData,
+                    days: selectedUserName === 'Francisco Ruiz Gomez' ? selectedWeekData.days : selectedWeekData.days.slice(0, 4)
+                  }} 
+                  rms={userState.rms} 
+                  selectedDayIndex={selectedDayIndex}
+                  onChangeDayIndex={setSelectedDayIndex}
+                />
+              </>
+            )}
+
+            {activeTab === 'calibrator' && (
+              <RmEditor rms={userState.rms} onSave={handleRmsUpdate} />
+            )}
+
+            <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />
           </div>
         )}
       </main>

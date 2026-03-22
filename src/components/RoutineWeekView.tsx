@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { KEY_LIFTS } from '../data/keyLifts';
 import { calculatePercentageLoad, formatKg } from '../lib/calculations';
 import type { Exercise, RmKey, TrainingWeek } from '../types/routine';
@@ -6,6 +6,8 @@ import type { Exercise, RmKey, TrainingWeek } from '../types/routine';
 type RoutineWeekViewProps = {
   week: TrainingWeek;
   rms: Partial<Record<RmKey, number>>;
+  selectedDayIndex: number;
+  onChangeDayIndex: (index: number) => void;
 };
 
 function getRmValueForKey(rms: Partial<Record<RmKey, number>>, key: RmKey): number | undefined {
@@ -80,32 +82,24 @@ function ExerciseRow({ exercise, rms }: { exercise: Exercise; rms: Partial<Recor
   );
 }
 
-export function RoutineWeekView({ week, rms }: RoutineWeekViewProps) {
-  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
-
+export function RoutineWeekView({ week, rms, selectedDayIndex, onChangeDayIndex }: RoutineWeekViewProps) {
   useEffect(() => {
     if (selectedDayIndex >= week.days.length) {
-      setSelectedDayIndex(0);
+      onChangeDayIndex(0);
     }
-  }, [week, selectedDayIndex]);
+  }, [week, selectedDayIndex, onChangeDayIndex]);
 
   const activeDay = week.days[selectedDayIndex] || week.days[0];
 
   return (
     <section className="space-y-6">
-      <header className="border-l-2 border-primary pl-4">
-        <h2 className="font-display text-2xl font-bold uppercase tracking-tighter text-on-surface">
-          / PROTOCOLO SEMANA {week.week}
-        </h2>
-      </header>
-
       <div className="flex overflow-x-auto gap-2 pb-2">
         {week.days.map((day, idx) => {
           const isActive = idx === selectedDayIndex;
           return (
             <button
               key={day.day}
-              onClick={() => setSelectedDayIndex(idx)}
+              onClick={() => onChangeDayIndex(idx)}
               className={`whitespace-nowrap px-6 py-3 font-display text-sm font-bold uppercase tracking-wider transition-colors border-b-2 ${
                 isActive 
                   ? 'bg-surface-highest text-primary border-primary' 
