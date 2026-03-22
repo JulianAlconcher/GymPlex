@@ -327,7 +327,15 @@ export default function App() {
           <section className="w-full space-y-6 bg-surface-low p-8 shadow-2xl">
             <div className="border-l-2 border-primary pl-4">
               <h1 className="font-display text-3xl font-bold uppercase tracking-tighter text-on-surface">ACCESO CORE</h1>
-              <p className="mt-1 text-sm text-on-surface/60">SELECCIONÁ TU PERFIL PARA INICIAR LA MATRIZ DE CARGA</p>
+              <div className="mt-1 text-sm text-on-surface/60">
+                {selectedUserId ? (
+                  <span className="text-primary font-bold animate-pulse uppercase">
+                    Tocá tu perfil nuevamente para ingresar
+                  </span>
+                ) : (
+                  <span className="uppercase">Seleccioná tu perfil para iniciar la matriz de carga</span>
+                )}
+              </div>
             </div>
 
             {errorMessage ? (
@@ -342,16 +350,17 @@ export default function App() {
               </p>
             ) : null}
 
-            <UserSelector users={users} selectedUserId={selectedUserId} onChange={setSelectedUserId} />
-
-            <button
-              type="button"
-              disabled={!selectedUserId}
-              onClick={() => setHasConfirmedUser(true)}
-              className="mt-6 w-full bg-gradient-to-br from-primary-container to-inverse-primary px-6 py-4 font-display text-base uppercase tracking-tight text-white transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:bg-surface-highest disabled:from-surface-highest disabled:to-surface-highest disabled:text-on-surface/30"
-            >
-              Inicializar
-            </button>
+            <UserSelector 
+              users={users} 
+              selectedUserId={selectedUserId} 
+              onChange={(newId) => {
+                if (newId === selectedUserId) {
+                  setHasConfirmedUser(true);
+                } else {
+                  setSelectedUserId(newId);
+                }
+              }} 
+            />
           </section>
         </main>
       </div>
