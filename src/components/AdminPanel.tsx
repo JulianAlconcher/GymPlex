@@ -416,7 +416,7 @@ export function AdminPanel({
               ) : (
                 <div className="space-y-3">
                   {activeDay.exercises.map((exercise, exerciseIndex) => (
-                    <article key={`${exercise.name}-${exerciseIndex}`} className="space-y-3 border border-outline-variant p-3">
+                    <article key={exerciseIndex} className="space-y-3 border border-outline-variant p-3">
                       <div className="grid gap-3 sm:grid-cols-2">
                         <label className="text-xs uppercase tracking-widest text-on-surface/60">
                           Nombre
@@ -533,16 +533,18 @@ export function AdminPanel({
                             Ejercicios de bi-serie (separados por coma)
                             <input
                               type="text"
-                              value={(exercise.supersetExercises ?? []).join(', ')}
+                              value={(exercise as any).supersetExercisesRaw ?? (exercise.supersetExercises ?? []).join(', ')}
                               onChange={(event) => {
-                                const values = event.target.value
+                                const rawValue = event.target.value;
+                                const values = rawValue
                                   .split(',')
                                   .map((entry) => entry.trim())
                                   .filter(Boolean);
 
                                 updateExercise(selectedDayIndex, exerciseIndex, {
                                   supersetExercises: values,
-                                });
+                                  supersetExercisesRaw: rawValue,
+                                } as any);
                               }}
                               className="mt-1 w-full border-b-2 border-outline-variant bg-surface px-3 py-2 text-sm text-on-surface outline-none focus:border-primary"
                             />
