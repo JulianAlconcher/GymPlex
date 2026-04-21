@@ -48,15 +48,21 @@ function defaultUserState(): UserState {
 }
 
 export default function App() {
-  const [hasConfirmedUser, setHasConfirmedUser] = useState(false);
-  const [hasPassedPreloader, setHasPassedPreloader] = useState(false);
+  const [hasConfirmedUser, setHasConfirmedUser] = useState(() => {
+    return localStorage.getItem('gymplex.hasConfirmedUser') === 'true';
+  });
+  const [hasPassedPreloader, setHasPassedPreloader] = useState(() => {
+    return localStorage.getItem('gymplex.hasPassedPreloader') === 'true';
+  });
   const [isBootstrapping, setIsBootstrapping] = useState(true);
   const [isBusy, setIsBusy] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [users, setUsers] = useState<AppUser[]>([]);
   const [routineWeeks, setRoutineWeeks] = useState<TrainingWeek[]>([]);
   const [selectedUserId, setSelectedUserId] = useState('');
-  const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(false);
+  const [isAdminPanelOpen, setIsAdminPanelOpen] = useState(() => {
+    return localStorage.getItem('gymplex.isAdminPanelOpen') === 'true';
+  });
   const [userState, setUserState] = useState<UserState>({
     selectedWeek: 1,
     rms: {},
@@ -70,8 +76,32 @@ export default function App() {
     [availableWeeks.length]
   );
 
-  const [activeTab, setActiveTab] = useState<TabId>('routine');
-  const [selectedDayIndex, setSelectedDayIndex] = useState(0);
+  const [activeTab, setActiveTab] = useState<TabId>(() => {
+    return (localStorage.getItem('gymplex.activeTab') as TabId) || 'routine';
+  });
+  const [selectedDayIndex, setSelectedDayIndex] = useState(() => {
+    return Number(localStorage.getItem('gymplex.selectedDayIndex')) || 0;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('gymplex.hasConfirmedUser', String(hasConfirmedUser));
+  }, [hasConfirmedUser]);
+
+  useEffect(() => {
+    localStorage.setItem('gymplex.hasPassedPreloader', String(hasPassedPreloader));
+  }, [hasPassedPreloader]);
+
+  useEffect(() => {
+    localStorage.setItem('gymplex.activeTab', activeTab);
+  }, [activeTab]);
+
+  useEffect(() => {
+    localStorage.setItem('gymplex.selectedDayIndex', String(selectedDayIndex));
+  }, [selectedDayIndex]);
+
+  useEffect(() => {
+    localStorage.setItem('gymplex.isAdminPanelOpen', String(isAdminPanelOpen));
+  }, [isAdminPanelOpen]);
 
   useEffect(() => {
     let mounted = true;
