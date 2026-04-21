@@ -111,8 +111,11 @@ export default function App() {
       setErrorMessage('');
 
       try {
-        const fetchedUsers = await fetchUsers();
-        let fetchedWeeks = await fetchRoutineWeeks();
+        const [fetchedUsers, initialFetchedWeeks] = await Promise.all([
+          fetchUsers(),
+          fetchRoutineWeeks(),
+        ]);
+        let fetchedWeeks = initialFetchedWeeks;
 
         if (isSupabaseConfigured && fetchedWeeks.length === 0) {
           await seedRoutineWeeksFromLocalData();
